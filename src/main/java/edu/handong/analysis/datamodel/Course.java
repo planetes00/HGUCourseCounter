@@ -12,14 +12,24 @@ public class Course {
 	private int yearTaken;
 	private int semesterCourseTaken;
 
-	Course(String line){
-		
+	public Course(String line){
+		String[] array = line.split(",");
+		this.studentId=array[0];
+		this.yearMonthGraduated=array[1];
+		this.firstMajor=array[2];
+		this.secondMajor=array[3];
+		this.courseCode=array[4];
+		this.courseName=array[5];
+		this.courseCredit=array[6];
+		this.yearTaken= Integer.parseInt(array[7]);
+		this.semesterCourseTaken= Integer.parseInt(array[8]);
 	}
-	public get() {
-		
-	}
+	public String getID() {return this.studentId;}
 	
-	public set() {
-		
+	public int getyear() {
+		return this.yearTaken;
+	}
+	public int getsemester() {
+		return this.semesterCourseTaken;
 	}
 }

@@ -2,8 +2,14 @@ package edu.handong.analysis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.lang.String.*;
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
 
 import edu.handong.analysis.datamodel.Course;
 import edu.handong.analysis.datamodel.Student;
@@ -53,10 +59,31 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private HashMap<String,Student> loadStudentCourseRecords(ArrayList<String> lines) {
+		HashMap<String,Student> hm=null;
+		ListIterator iterator = lines.listIterator();
+		Course ho=null;
+		Student no=null;
+		int i=0;
+        while (iterator.hasNext()) {
+        	String str1=(String)iterator.next();
+        	ho=new Course(str1);
+        	if(!studentExist(hm,ho.getID())) hm.put(ho.getID(),new Student(ho.getID()));
+        	hm.get(ho.getID()).addCourse(ho);
+        }
 		
-		// TODO: Implement this method
+		return hm;
+	}
+	
+	private boolean studentExist(HashMap<String,Student> students, String student) {
+		Collection collection = students.values();
+		Iterator iter = collection.iterator();
+		while(iter.hasNext()){
+			Student pw=(Student)iter.next();
+			if(pw!=null)
+				if(student.equals(pw.getID())) return true;
+		}
 		
-		return null; // do not forget to return a proper variable.
+		return false;
 	}
 
 	/**
@@ -74,7 +101,7 @@ public class HGUCoursePatternAnalyzer {
 	 */
 	private ArrayList<String> countNumberOfCoursesTakenInEachSemester(Map<String, Student> sortedStudents) {
 		
-		// TODO: Implement this method
+		
 		
 		return null; // do not forget to return a proper variable.
 	}
