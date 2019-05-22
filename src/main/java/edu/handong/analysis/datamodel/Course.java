@@ -1,15 +1,25 @@
 package edu.handong.analysis.datamodel;
 
 public class Course {
-	private String courseName;
 	
-	public Course(String name) {
-		this.courseName=name;
+	private String studentId;
+	private String yearMonthGraduated;
+	private String firstMajor;
+	private String secondMajor;
+	private String courseCode;
+	private String courseName;
+	private String courseCredit;
+	private int yearTaken;
+	private int semesterCourseTaken;
+
+	Course(String line){
+		
 	}
-
-	public String getCourseName() {
-		return this.courseName;
+	public get() {
+		
 	}
-
-
+	
+	public set() {
+		
+	}
 }
