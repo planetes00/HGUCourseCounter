@@ -21,8 +21,8 @@ public class Course {
 		this.courseCode=array[4];
 		this.courseName=array[5];
 		this.courseCredit=array[6];
-		this.yearTaken= Integer.parseInt(array[7]);
-		this.semesterCourseTaken= Integer.parseInt(array[8]);
+		this.yearTaken= Integer.parseInt(array[7].trim());
+		this.semesterCourseTaken= Integer.parseInt(array[8].trim());
 	}
 	public String getID() {return this.studentId;}
 	

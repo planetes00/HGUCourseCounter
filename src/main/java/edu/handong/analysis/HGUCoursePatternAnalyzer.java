@@ -2,7 +2,7 @@ package edu.handong.analysis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.ListIterator;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 import java.lang.String.*;
@@ -59,15 +59,17 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private HashMap<String,Student> loadStudentCourseRecords(ArrayList<String> lines) {
-		HashMap<String,Student> hm=null;
-		ListIterator iterator = lines.listIterator();
+		HashMap<String,Student> hm=new HashMap();
 		Course ho=null;
-		Student no=null;
-		int i=0;
-        while (iterator.hasNext()) {
-        	String str1=(String)iterator.next();
+		
+		Iterator iter = lines.iterator();
+        while (iter.hasNext()) {
+        	String str1=(String)iter.next();
         	ho=new Course(str1);
-        	if(!studentExist(hm,ho.getID())) hm.put(ho.getID(),new Student(ho.getID()));
+        	if(!studentExist(hm,ho.getID())) {
+        		hm.put(ho.getID(),new Student(ho.getID()));
+        		
+        	}
         	hm.get(ho.getID()).addCourse(ho);
         }
 		
@@ -100,9 +102,15 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private ArrayList<String> countNumberOfCoursesTakenInEachSemester(Map<String, Student> sortedStudents) {
-		
-		
-		
-		return null; // do not forget to return a proper variable.
+		ArrayList<String> ho=new ArrayList<>();
+		for( String key : sortedStudents.keySet() ){ 
+			Student tempStu=sortedStudents.get(key);
+			Map<String,Integer> hm = new TreeMap<>(tempStu.getSemestersByYearAndSemester());
+			for( String key1 : hm.keySet() ){ 
+				int k=hm.get(key1);
+				ho.add(key+","+tempStu.getTotalSem()+","+k+","+tempStu.getNumCourseInNthSementer(k));
+			}
+		}
+		return ho; // do not forget to return a proper variable.
 	}
 }
