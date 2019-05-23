@@ -111,6 +111,7 @@ public class HGUCoursePatternAnalyzer {
 				ho.add(key+","+tempStu.getTotalSem()+","+k+","+tempStu.getNumCourseInNthSementer(k));
 			}
 		}
+		ho.add(0,"StudentID, TotalNumberOfSemestersRegistered, Semester, NumCoursesTakenInTheSemester");
 		return ho; // do not forget to return a proper variable.
 	}
 }
