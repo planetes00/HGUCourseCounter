@@ -32,4 +32,14 @@ public class Course {
 	public int getsemester() {
 		return this.semesterCourseTaken;
 	}
+	public String getYear() {
+		return this.yearTaken+"-"+this.semesterCourseTaken;
+	}
+	public String getCode() {
+		return this.courseCode;
+	}
+	public String getName() {
+		return this.courseName;
+	}
+	
 }
